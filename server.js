@@ -24,6 +24,7 @@ mongoose.connect(db,
     .then(() => console.log('MongoDB Connected!'))
     .catch((err) => console.log(err))
 
+// Temporary
 app.get("/", (req, res) => res.send('Hello World!'))
 
 app.listen(port, () => console.log(`App listening on port ${port}`))

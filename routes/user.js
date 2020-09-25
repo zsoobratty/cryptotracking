@@ -21,7 +21,7 @@ router.post('/signup', async (req, res) => {
 router.post('/signin', async (req, res) => {
     try {
         const { email, password } = req.body
-        const user = User.findByCredentials(email, password)
+        const user = await User.findByCredentials(email, password)
         if(!user) {
             return res.status(401).send({ error: 'Login failed - please check your credentials'})
         }
@@ -29,6 +29,7 @@ router.post('/signin', async (req, res) => {
         res.send({user, token})
     }
     catch (error) {
+        console.log(error)
         res.status(400).send(error)
     }
 })
