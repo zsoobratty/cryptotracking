@@ -5,7 +5,6 @@ const port = process.env.PORT || 5000
 
 app.use(express.json());
 
-
 // DB config
 const db = require('./config/keys').MONGOURI;
 
