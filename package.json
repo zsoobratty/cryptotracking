@@ -13,7 +13,8 @@
   "dependencies": {
     "express": "^4.17.1",
     "live-server": "^1.2.1",
-    "mongoose": "^5.10.7"
+    "mongoose": "^5.10.7",
+    "mongoose-url-slugs": "^1.0.2"
   },
   "devDependencies": {
     "nodemon": "^2.0.4"
