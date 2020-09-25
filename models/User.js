@@ -28,6 +28,7 @@ const userSchema = new Schema({
         required: true,
         minlength: 6
     },
+    // Multiple tokens for allowing tokens from logging in on different devices
     tokens: [{
         token: {
             type: String,
@@ -36,8 +37,8 @@ const userSchema = new Schema({
     }]
 })
 
+// Hash the password before saving User model using bcrypt
 userSchema.pre('save', async (next) => {
-    // Hash the password before saving User model
     const user = this
     if(user.isModified('password')) {
         user.password = await bcrypt.hash(user.password, 8)
@@ -45,17 +46,20 @@ userSchema.pre('save', async (next) => {
     next()
 })
 
+
+// Generate a token for the user and save in User model
 userSchema.methods.generateAuthToken = async () => {
-    // Generate a token for the user
     const user = this
     const JWT_KEY = require('../config/keys').JWT_KEY
     const token = jwt.sign({ _id: user._id}, JWT_KEY)
+    // Allows multiple tokens for logging in on difference devices
     user.tokens = user.tokens.concat({token})
     
     await user.save()
     return token
 }
 
+// Check for user credentials and return user if valid username and password
 userSchema.methods.findByCredentials = async (email, password) => {
     // Search for user by email and password
     const user = User.findOne( {email} )
