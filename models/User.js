@@ -38,7 +38,7 @@ const userSchema = new Schema({
 })
 
 // Hash the password before saving User model using bcrypt
-userSchema.pre('save', async (next) => {
+userSchema.pre('save', async function (next) {
     const user = this
     if(user.isModified('password')) {
         user.password = await bcrypt.hash(user.password, 8)
@@ -48,7 +48,7 @@ userSchema.pre('save', async (next) => {
 
 
 // Generate a token for the user and save in User model
-userSchema.methods.generateAuthToken = async () => {
+userSchema.methods.generateAuthToken = async function () {
     const user = this
     const JWT_KEY = require('../config/keys').JWT_KEY
     const token = jwt.sign({ _id: user._id}, JWT_KEY)

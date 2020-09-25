@@ -12,6 +12,8 @@ app.use(userRouter)
 // DB config
 const db = require('./config/keys').MONGOURI;
 
+mongoose.set('useCreateIndex', true)
+
 // Connect to DB
 mongoose.connect(db, 
     { 
