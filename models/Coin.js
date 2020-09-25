@@ -14,10 +14,6 @@ const coinSchema = new Schema({
         type: Number,
         required: true
     },
-    date: {
-        type: Date,
-        default: Date.now
-    },
     value: {
         type: Number,
         required: true
@@ -25,7 +21,15 @@ const coinSchema = new Schema({
     slug: {
         type: String,
         slug: "title"
-    }
+    },
+    symbol: {
+        type: String,
+        required: true
+    },
+    date: {
+    type: Date,
+    default: Date.now
+    },
 });
 
  const Coin = mongoose.model('Coin', coinSchema)
