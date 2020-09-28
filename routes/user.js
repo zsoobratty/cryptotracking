@@ -53,5 +53,14 @@ router.post('/users/me/logout', requireToken, async (req, res) => {
     }
 })
 
+router.post('/users/me/logoutall', requireToken, async (req, res) => {
+    try {
+        req.user.tokens.splice(0, req.user.tokens.length)
+        await req.user.save()
+        res.send()
+    } catch (error) {
+        res.status(500).send(error)
+    }
+})
 
 module.exports = router
