@@ -14,7 +14,7 @@ const coinSchema = new Schema({
         type: Number,
         required: true
     },
-    value: {
+    initialValue: {
         type: Number,
         required: true
     },
