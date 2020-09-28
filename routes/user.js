@@ -41,7 +41,7 @@ router.get('/users/me', requireToken, async (req, res) => {
 })
 
 // Logout of device
-router.post('/users/me/logout', auth, async (req, res) => {
+router.post('/users/me/logout', requireToken, async (req, res) => {
     try {
         req.user.tokens = req.user.tokens.filter((token) => {
             return token.token != req.token
@@ -52,5 +52,6 @@ router.post('/users/me/logout', auth, async (req, res) => {
         res.status(500).send(error)
     }
 })
+
 
 module.exports = router
