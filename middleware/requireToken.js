@@ -2,7 +2,7 @@ const jwt = require('jsonwebtoken')
 const User = require('../models/User')
 const config = require('../config/keys')
 
-const requireLogin = async(req, res, next) => {
+const requireToken = async(req, res, next) => {
     const token = req.header('Authorization').replace('Bearer ', '')
     const data = jwt.verify(token, config.JWT_KEY)
     try {
@@ -19,4 +19,4 @@ const requireLogin = async(req, res, next) => {
 
 }
 
-module.exports = requireLogin
+module.exports = requireToken

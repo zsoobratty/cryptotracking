@@ -1,5 +1,6 @@
 const express = require('express')
 const User = require('../models/User')
+const requireToken = require('../middleware/requireToken')
 
 const router = express.Router()
 
@@ -32,6 +33,11 @@ router.post('/signin', async (req, res) => {
         console.log(error)
         res.status(400).send(error)
     }
+})
+
+// View user profile
+router.get('/users/me', requireToken, async (req, res) => {
+    res.send(req.user)
 })
 
 module.exports = router
