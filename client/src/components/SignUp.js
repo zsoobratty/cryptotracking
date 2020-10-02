@@ -15,7 +15,7 @@ const SignUp = () => {
             alert('Invalid Email Address')
             return;
           }
-          axios.post('http://localhost:5000/signup', {
+          axios.post('/signup', {
               name,
               email,
               password
