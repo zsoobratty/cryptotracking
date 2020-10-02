@@ -1,5 +1,6 @@
 import React, {useState} from 'react'
 import axios from 'axios'
+import M from "materialize-css";
 
 const SignUp = () => {
     const [name, setName] = useState('')
@@ -12,7 +13,7 @@ const SignUp = () => {
               email
             )
           ) {
-            alert('Invalid Email Address')
+            M.toast({ html: "Invalid Email Address", classes: "#e53935 red darken-1" });
             return;
           }
           axios.post('/signup', {
@@ -20,9 +21,7 @@ const SignUp = () => {
               email,
               password
           })
-          .then((res) => {
-              console.log(res)
-          })
+          .then((res) => console.log(res.data))
           .catch((err) => {
               console.log(err)
           })
