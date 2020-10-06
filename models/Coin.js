@@ -1,5 +1,6 @@
 const mongoose = require('mongoose')
 const Schema = mongoose.Schema;
+const {ObjectId} = mongoose.Schema.Types
 const slug = require('mongoose-url-slugs')
 
 mongoose.plugin(slug)
