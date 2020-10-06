@@ -11,7 +11,7 @@ router.post('/addcoin', requireToken, async (req, res) => {
         if(!name || !holding || !purchasePrice || !symbol) {
             return res.status(422).json({error: "Missing information"})
         }
-        
+
         const coin = new Coin({
             name,
             holding,
@@ -20,11 +20,9 @@ router.post('/addcoin', requireToken, async (req, res) => {
             savedBy: req.user
         })
         await coin.save()
-        res.status(201).send('Coin successfully added')
-        
+        res.status(201).send('Coin successfully added')  
     }
     catch (error) {
-        console.log(error)
         res.status(400).send(error)
     }
 })
