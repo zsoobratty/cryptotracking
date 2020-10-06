@@ -6,7 +6,7 @@ const {ObjectId} = mongoose.Schema.Types
 const coinSchema = new Schema({
     name: {
         type: String,
-        required: true
+        required: true,
     },
     holding: {
         type: Number,
