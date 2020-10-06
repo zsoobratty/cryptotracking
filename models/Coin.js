@@ -30,6 +30,10 @@ const coinSchema = new Schema({
     type: Date,
     default: Date.now
     },
+    savedBy: {
+        type: ObjectId,
+        ref: "User"
+    }
 });
 
  const Coin = mongoose.model('Coin', coinSchema)
