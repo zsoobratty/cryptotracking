@@ -26,4 +26,11 @@ router.post('/addcoin', requireToken, async (req, res) => {
     }
 })
 
+router.get('/mycoins', requireToken, async (req, res) => {
+    Coin.find({savedBy: req.user._id})
+        .then(myCoins=> {
+            res.json({myCoins})
+        })
+})
+
 module.exports = router
