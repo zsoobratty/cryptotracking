@@ -10,10 +10,9 @@ router.post('/signup', async (req, res) => {
         const user = new User(req.body)
         await user.save()
         const token = await user.generateAuthToken()
-        res.status(201).send({ user, token })
+        res.status(201).send({ user, token, message: 'User successfully signed up' })
     }
     catch (error) {
-        console.log(error)
         res.status(400).send(error)
     }
 })
