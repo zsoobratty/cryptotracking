@@ -1,12 +1,13 @@
 import React, {useState, useEffect} from 'react';
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom'
+import axios from 'axios'
 import NavBar from './components/NavBar'
 import Home from './components/Home'
 import SignIn from './components/SignIn'
 import SignUp from './components/SignUp'
 import Profile from './components/Profile'
 import Coins from './components/Coins'
-import {UserContext} from './context/UserContext'
+import UserContext from './context/UserContext'
 import './App.css';
 
 function App() {
@@ -15,6 +16,30 @@ function App() {
     token: undefined,
     user: undefined
   })
+
+  useEffect(() => {
+    const checkLogin = async () => {
+      let token = localStorage.getItem('token')
+      if (token === null) {
+        localStorage.setItem("token", "")
+        token = ""
+      }
+      const tokenCheck = await axios.post(
+        '/tokenIsValid', 
+        null, 
+        { headers: {"Authorization": token} }
+      )
+      if(tokenCheck.data) {
+        const userResponse = await axios.get('/users/me', {headers: {"Authorization": token}})
+        setUserData({
+          token,
+          user: userResponse.data
+        })
+      }
+    }
+    
+    checkLogin()
+  }, [])
 
   return (
     <div className="App">
