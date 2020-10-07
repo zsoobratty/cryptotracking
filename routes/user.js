@@ -1,6 +1,8 @@
 const express = require('express')
 const User = require('../models/User')
 const requireToken = require('../middleware/requireToken')
+const jwt = require('jsonwebtoken')
+const {JWT_KEY} = require('../config/keys')
 
 const router = express.Router()
 
@@ -36,7 +38,12 @@ router.post('/signin', async (req, res) => {
 
 // View user profile
 router.get('/users/me', requireToken, async (req, res) => {
-    res.send(req.user)
+    const user = await User.findById(req.user)
+    res.json({
+        id: user._id,
+        name: user.name,
+        email: req.email
+    })
 })
 
 // Logout of device
@@ -59,6 +66,24 @@ router.post('/users/me/logoutall', requireToken, async (req, res) => {
         res.send()
     } catch (error) {
         res.status(500).send(error)
+    }
+})
+
+router.post('/tokenIsValid', async(req, res) => {
+    try {
+        const token = req.header('Authorization').replace('Bearer ', '');
+        if(!token) return res.json({error: 'No token'})
+
+        const verified = jwt.verify(token, JWT_KEY)
+        if(!verified) return res.json({error: 'Not verified'})
+        console.log(verified)
+        const user = await User.findById(verified._id)
+        if(!user) return res.json({error: 'No user'})
+
+        return res.json(true)
+    }
+    catch (err) {
+        res.status(500).json({error: err.message})
     }
 })
 
