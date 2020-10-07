@@ -19,7 +19,7 @@ const Coins = () => {
     return (
         <div>
             This is the coins page
-            <div>
+            <div className='Coins'>
                 {coins.map(coin => 
                     <Coin key={coin.id} coin={coin} />
                 )}

@@ -19,7 +19,7 @@ const AuthOptions = () => {
     return (
         <nav className='AuthOptions'>
             {userData.user ? (
-                <button onClick={logOut}>Log out</button> 
+                <button onClick={logOut}><h1>Log out</h1></button> 
             ) : (
                 <div>
                     <button onClick={signIn}><h1>Login</h1></button>

@@ -11,7 +11,7 @@ body {
 }
 
 a {
-  color: #2199df;
+  color: aliceblue;
   text-decoration: unset;
 }
 
@@ -30,9 +30,6 @@ button {
   height: 50px;
 }
 
-.NavBar h1, h2, h3 {
-  color: aliceblue;
-}
 
 .NavBar .AuthOptions {
   display: flex;
@@ -40,10 +37,17 @@ button {
 }
 
 .NavBar .AuthOptions button {
-  padding: 10px;
+  padding-left: 10px;
+  padding-right: 10px;
+  height: 100%;
+  color: aliceblue;
   background-color: rgb(224, 54, 24);
 }
 
 .NavBar .AuthOptions button:hover {
   background-color: rgb(197, 42, 14);
+}
+
+.Coin {
+  color: black;
 }
