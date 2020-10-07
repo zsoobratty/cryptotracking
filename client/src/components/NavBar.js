@@ -4,11 +4,11 @@ import AuthOptions from './AuthOptions'
 
 const NavBar = () => {
     return (
-            <nav>
-                <Link to="/">CryptoTrack</Link>
-                <Link to="/profile">Profile</Link>
+            <nav className='NavBar'>
+                <Link to="/"><h1 className='title'>CryptoTrack</h1></Link>
+                <Link to="/profile"><h1>Profile</h1></Link>
+                <Link to="/coins"><h1>Top 100</h1></Link>
                 <AuthOptions />
-                <Link to="/coins">Top 100 Coins</Link>
             </nav>
     )
 }
