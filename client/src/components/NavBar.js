@@ -6,8 +6,8 @@ const NavBar = () => {
     return (
             <nav className='NavBar'>
                 <Link to="/"><h1 className='title'>CryptoTrack</h1></Link>
-                <Link to="/profile"><h1>Profile</h1></Link>
-                <Link to="/coins"><h1>Top 100</h1></Link>
+                <Link to="/profile"><h3>Profile</h3></Link>
+                <Link to="/coins"><h3>Top 100</h3></Link>
                 <AuthOptions />
             </nav>
     )

@@ -20,7 +20,6 @@ button {
   background: none;
   color: unset;
   cursor: pointer;
-  margin: 10px;
 }
 
 .NavBar {
@@ -31,6 +30,20 @@ button {
   height: 50px;
 }
 
-.NavBar h1 {
+.NavBar h1, h2, h3 {
   color: aliceblue;
+}
+
+.NavBar .AuthOptions {
+  display: flex;
+  height: 100%;
+}
+
+.NavBar .AuthOptions button {
+  padding: 10px;
+  background-color: rgb(224, 54, 24);
+}
+
+.NavBar .AuthOptions button:hover {
+  background-color: rgb(197, 42, 14);
 }
