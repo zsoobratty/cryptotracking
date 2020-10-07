@@ -1,13 +1,13 @@
 import React from 'react'
 import {Link} from 'react-router-dom'
+import AuthOptions from './AuthOptions'
 
 const NavBar = () => {
     return (
             <nav>
-                <Link to="/">Home</Link>
+                <Link to="/">CryptoTrack</Link>
                 <Link to="/profile">Profile</Link>
-                <Link to="/signin">Sign In</Link>
-                <Link to="/signup">Sign Up</Link>
+                <AuthOptions />
                 <Link to="/coins">Top 100 Coins</Link>
             </nav>
     )
