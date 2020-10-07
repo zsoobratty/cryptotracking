@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom'
 import NavBar from './components/NavBar'
 import Home from './components/Home'
@@ -6,14 +6,13 @@ import SignIn from './components/SignIn'
 import SignUp from './components/SignUp'
 import Profile from './components/Profile'
 import Coins from './components/Coins'
-import UserContext from './context'
 import './App.css';
 
 function App() {
+
   return (
     <div className="App">
       <Router>
-        <UserContext.Provider>
           <NavBar />
           <Switch>
             <Route exact path="/" >
@@ -32,7 +31,6 @@ function App() {
               <Coins />
             </Route>
         </Switch>
-        </UserContext.Provider>
       </Router>
     </div>
   );
