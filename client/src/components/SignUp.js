@@ -1,13 +1,19 @@
-import React, {useState} from 'react'
+import React, {useState, useContext} from 'react'
+import UserContext from '../context/UserContext'
 import axios from 'axios'
 import M from "materialize-css";
+import { useHistory } from 'react-router-dom';
 
 const SignUp = () => {
     const [name, setName] = useState('')
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
 
-    const postData = () => {
+    const {setUserData} = useContext(UserContext)
+    const history = useHistory()
+
+    const postData = async (e) => {
+        e.preventDefault()
         if (
             !/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(
               email
@@ -16,40 +22,47 @@ const SignUp = () => {
             M.toast({ html: "Invalid Email Address", classes: "#e53935 red darken-1" });
             return;
           }
-          axios.post('/signup', {
+          await axios.post('/signup', {
               name,
               email,
               password
           })
-          .then((res) => console.log(res.data))
-          .catch((err) => {
-              console.log(err)
+          const loginResponse = await axios.post('/signin', {
+              email,
+              password
           })
-
+          setUserData({
+              token: loginResponse.data.token,
+              user: loginResponse.data.user
+          })
+          localStorage.setItem("token", loginResponse.data.token)
+          history.push('/')
     }
 
     return (
-        <div>
+        <div className='SignUp'>
             This is the sign up page
-            <input 
-                type="text"
-                placeholder="Name"
-                value={name}
-                onChange={(e) => setName(e.target.value)}
-            />
-            <input 
-                type="text"
-                placeholder="Email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-            />
-            <input 
-                type="text"
-                placeholder="Password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-            />
-            <button onClick={postData}>Submit</button>
+            <form>
+                <input 
+                    type="text"
+                    placeholder="Name"
+                    value={name}
+                    onChange={(e) => setName(e.target.value)}
+                />
+                <input 
+                    type="text"
+                    placeholder="Email"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                />
+                <input 
+                    type="text"
+                    placeholder="Password"
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                />
+                <button onClick={postData}>Submit</button>
+            </form>
         </div>
     )
 }
