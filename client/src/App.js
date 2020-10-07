@@ -6,13 +6,20 @@ import SignIn from './components/SignIn'
 import SignUp from './components/SignUp'
 import Profile from './components/Profile'
 import Coins from './components/Coins'
+import {UserContext} from './context/UserContext'
 import './App.css';
 
 function App() {
 
+  const [userData, setUserData] = useState({
+    token: undefined,
+    user: undefined
+  })
+
   return (
     <div className="App">
       <Router>
+        <UserContext.Provider value={{userData, setUserData}}>
           <NavBar />
           <Switch>
             <Route exact path="/" >
@@ -31,7 +38,9 @@ function App() {
               <Coins />
             </Route>
         </Switch>
+        </UserContext.Provider>
       </Router>
+      
     </div>
   );
 }
