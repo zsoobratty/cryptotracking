@@ -52,11 +52,7 @@ button {
 
 .NavBar .AuthOptions button:hover {
   background-color: rgb(197, 42, 14);
-}
-
-.Coin {
-  color: black;
-}
+} 
 
 .SignUp {
   box-sizing: border-box;
@@ -128,16 +124,22 @@ button {
 .Coin {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  margin: 10px;
+  margin: 5px;
   border: 1px solid black;
   padding: 10px;
+  width: 250px;
+  align-items: center;
+  text-align: center;
 }
 
-.Coins {
-  display: flex; 
-  flex-direction: row;
-  justify-content: space-between;
-  width: 200px;
+.Coins-container {
   text-align: center;
+}
+.Coins{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: fit-content;
+  justify-content: space-between;
+  margin: 10px;
 }

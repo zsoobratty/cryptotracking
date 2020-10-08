@@ -18,13 +18,14 @@ const Coins = () => {
     }, [])
 
     return (
-        <div>
-            This is the coins page
+        <div className='Coins-container'>
+            <h2>Here are the current top 100 coins</h2>
             <div className='Coins'>
-                {coins.map(coin => 
-                    <Coin key={coin.id} coin={coin} />
-                )}
+            {coins.map((coin) => 
+                <Coin key={coin.id} coin={coin} />
+            )}
             </div>
+
         </div>
     )
 }
