@@ -12,7 +12,7 @@ const SignUp = () => {
     const {setUserData} = useContext(UserContext)
     const history = useHistory()
 
-    const postData = async (e) => {
+    const handleSignUp = async (e) => {
         e.preventDefault()
         if (
             !/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(
@@ -61,7 +61,7 @@ const SignUp = () => {
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
                 />
-                <button onClick={postData}>Submit</button>
+                <button onClick={handleSignUp}>Submit</button>
             </form>
         </div>
     )

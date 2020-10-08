@@ -30,6 +30,10 @@ button {
   height: 50px;
 }
 
+.NavBar .title {
+  margin-left: 10px;
+}
+
 
 .NavBar .AuthOptions {
   display: flex;
@@ -42,6 +46,7 @@ button {
   height: 100%;
   color: aliceblue;
   background-color: rgb(224, 54, 24);
+  outline: none;
 }
 
 .NavBar .AuthOptions button:hover {
