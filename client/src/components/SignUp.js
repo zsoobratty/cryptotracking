@@ -42,7 +42,7 @@ const SignUp = () => {
     return (
         <div className='SignUp'>
             This is the sign up page
-            <form>
+            <form className='SignUp-form'>
                 <input 
                     type="text"
                     placeholder="Name"

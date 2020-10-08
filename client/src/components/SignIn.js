@@ -33,9 +33,9 @@ const SignIn = () => {
     }
 
     return (
-        <div>
+        <div className='SignIn'>
             This is the sign in page
-            <form>
+            <form className='SignIn-form'>
                 <input 
                     type="text"
                     placeholder="Email Address"
