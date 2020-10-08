@@ -3,6 +3,8 @@ import React, { useState } from 'react'
 import UserContext from '../context/UserContext'
 import { useContext } from 'react'
 import { useHistory } from 'react-router-dom'
+import M from "materialize-css";
+
 
 const SignIn = () => {
     const [email, setEmail] = useState('')
@@ -12,16 +14,22 @@ const SignIn = () => {
 
     const handleSignIn = async (e) => {
         e.preventDefault()
-        const loginResponse = await axios.post('/signin', {
-            email,
-            password
-        })
-        setUserData({
-            token: loginResponse.data.token,
-            user: loginResponse.data.user
-        })
-        localStorage.setItem("token", loginResponse.data.token)
-        history.push('/')
+
+        try {
+            const loginResponse = await axios.post('/signin', {
+                email,
+                password
+            })
+            setUserData({
+                token: loginResponse.data.token,
+                user: loginResponse.data.user
+            })
+            localStorage.setItem("token", loginResponse.data.token)
+            history.push('/')
+        }
+        catch (error) {
+            M.toast({html: 'Invalid credentials. Please check and try again.'})
+        }
     }
 
     return (
@@ -35,7 +43,7 @@ const SignIn = () => {
                     onChange={(e) => setEmail(e.target.value)}
                 />
                 <input 
-                    type="text"
+                    type="password"
                     placeholder="Password"
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
