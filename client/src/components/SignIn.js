@@ -27,7 +27,7 @@ const SignIn = () => {
             localStorage.setItem("token", loginResponse.data.token)
             history.push('/')
         }
-        catch (error) {
+        catch {
             M.toast({html: 'Invalid credentials. Please check and try again.'})
         }
     }
