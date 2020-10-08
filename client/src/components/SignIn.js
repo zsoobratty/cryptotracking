@@ -36,15 +36,17 @@ const SignIn = () => {
         <div className='SignIn'>
             <h3>Sign in to view your coins!</h3>
             <form className='SignIn-form'>
+                <h5>Email address:</h5>
                 <input 
                     type="text"
-                    placeholder="Email Address"
+                    placeholder="Enter your email address..."
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                 />
+                <h5>Password:</h5>
                 <input 
                     type="password"
-                    placeholder="Password"
+                    placeholder="Enter your password..."
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
                 />
