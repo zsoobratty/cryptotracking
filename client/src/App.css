@@ -123,8 +123,8 @@ button {
 
 .Coin {
   display: flex;
+  flex: 0 20%; 
   flex-direction: column;
-  margin: 5px;
   border: 1px solid black;
   padding: 10px;
   width: 250px;
@@ -132,14 +132,13 @@ button {
   text-align: center;
 }
 
-.Coins-container {
+.Coins-summary {
   text-align: center;
+  padding: 10px;
 }
 .Coins{
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  width: fit-content;
   justify-content: space-between;
-  margin: 10px;
 }
