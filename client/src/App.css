@@ -24,7 +24,7 @@ button {
 }
 
 .NavBar {
-  background-color: #EC7357;
+  background-color: #EF846C;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -46,7 +46,7 @@ button {
   padding-right: 10px;
   height: 100%;
   color: aliceblue;
-  background-color: #E74723;
+  background-color: #E95635;
   outline: none;
 }
 
@@ -123,4 +123,21 @@ button {
   border-radius: 10px;
   background-color: #333333;
   color: #FCFAF9;
+}
+
+.Coin {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 10px;
+  border: 1px solid black;
+  padding: 10px;
+}
+
+.Coins {
+  display: flex; 
+  flex-direction: row;
+  justify-content: space-between;
+  width: 200px;
+  text-align: center;
 }

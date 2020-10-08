@@ -1,10 +1,12 @@
 import React from 'react'
 
 const Coin = ({coin}) => {
-    const { name, symbol, current_price } = coin
+    const { name, symbol, current_price, image } = coin
     return (
         <div className='Coin'>
-            <h2>{name} - {symbol.toUpperCase()}</h2>
+            <img src={image} alt={name} width="50px" height="50px"/>
+            <h2>{name}</h2> 
+            <h2>{symbol.toUpperCase()}</h2>
             <h3>${current_price}</h3>
         </div>
     )
