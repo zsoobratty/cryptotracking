@@ -19,7 +19,7 @@ const SignUp = () => {
               email
             )
           ) {
-            M.toast({ html: "Invalid Email Address" });
+            M.toast({ html: "Invalid Email Address", classes: "toast"});
             return;
           }
           await axios.post('/signup', {
@@ -41,7 +41,7 @@ const SignUp = () => {
 
     return (
         <div className='SignUp'>
-            This is the sign up page
+            <h3>Sign up to track your coins!</h3>
             <form className='SignUp-form'>
                 <input 
                     type="text"

@@ -28,13 +28,13 @@ const SignIn = () => {
             history.push('/')
         }
         catch {
-            M.toast({html: 'Invalid credentials. Please check and try again.'})
+            M.toast({html: 'Invalid credentials. Please check and try again.', classes: 'toast'})
         }
     }
 
     return (
         <div className='SignIn'>
-            This is the sign in page
+            <h3>Sign in to view your coins!</h3>
             <form className='SignIn-form'>
                 <input 
                     type="text"
