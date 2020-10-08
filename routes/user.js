@@ -4,6 +4,7 @@ const requireToken = require('../middleware/requireToken')
 const jwt = require('jsonwebtoken')
 const {JWT_KEY} = require('../config/keys')
 
+
 const router = express.Router()
 
 // Create a new user
@@ -15,7 +16,7 @@ router.post('/signup', async (req, res) => {
         res.status(201).send({ user, token, message: 'User successfully signed up' })
     }
     catch (error) {
-        res.status(400).send(error)
+        res.status(400).send({error: error.message})
     }
 })
 
@@ -24,15 +25,17 @@ router.post('/signin', async (req, res) => {
     try {
         const { email, password } = req.body
         const user = await User.findByCredentials(email, password)
-        if(!user) {
-            return res.status(401).send({ error: 'Login failed - please check your credentials'})
-        }
         const token = await user.generateAuthToken()
-        res.send({user, token})
+        res.json({
+            user: {
+                id: user._id,
+                name: user.name,
+                email: user.email
+        }, 
+            token})
     }
     catch (error) {
-        console.log(error)
-        res.status(400).send(error)
+        res.status(400).send({error: error.message})
     }
 })
 
@@ -76,7 +79,6 @@ router.post('/tokenIsValid', async(req, res) => {
 
         const verified = jwt.verify(token, JWT_KEY)
         if(!verified) return res.json({error: 'Not verified'})
-        console.log(verified)
         const user = await User.findById(verified._id)
         if(!user) return res.json({error: 'No user'})
 
