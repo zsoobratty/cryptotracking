@@ -18,14 +18,14 @@ const SignUp = () => {
             M.toast({html: "Please complete all fields", classes: "toast"})
             return;
         }
-        if (
-            !/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(
-              email
-            )
-          ) {
-            M.toast({ html: "Invalid Email Address", classes: "toast"});
-            return;
-          }
+        // if (
+        //     !/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(
+        //       email
+        //     )
+        //   ) {
+        //     M.toast({ html: "Invalid Email Address", classes: "toast"});
+        //     return;
+        //   }
           await axios.post('/signup', {
               name,
               email,
