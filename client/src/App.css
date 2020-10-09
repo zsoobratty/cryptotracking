@@ -24,7 +24,7 @@ button {
 }
 
 .NavBar {
-  background-color: #EF846C;
+  background-color: #ba274a;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -46,12 +46,12 @@ button {
   padding-right: 10px;
   height: 100%;
   color: aliceblue;
-  background-color: #E95635;
+  background-color: #97203c;
   outline: none;
 }
 
 .NavBar .AuthOptions button:hover {
-  background-color: rgb(197, 42, 14);
+  background-color: #430e1b;
 } 
 
 .SignUp {
