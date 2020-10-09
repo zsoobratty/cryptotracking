@@ -1,11 +1,19 @@
 import React from 'react'
-
+import { useContext } from 'react'
+import UserContext from '../context/UserContext'
 
 const Home = () => {
-
+    const {userData} = useContext(UserContext)
+    console.log(userData)
     return (
         <div>
-            This is the home page
+            { userData.user ? 
+                ( 
+                    <h2>Welcome {userData.user.name}!</h2>
+                ) : (
+                    <h2>Welcome to CryptoTracker</h2>
+                )
+            }
         </div>
     )
 }
