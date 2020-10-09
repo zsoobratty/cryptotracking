@@ -31,6 +31,10 @@ const SignUp = () => {
               email,
               password
           })
+          .catch(err => {
+              console.log(err.response.data.error)
+            M.toast({html: err.response.data.error, classes: "toast"})
+          })
           const loginResponse = await axios.post('/signin', {
               email,
               password
