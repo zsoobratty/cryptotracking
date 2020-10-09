@@ -14,6 +14,10 @@ const SignUp = () => {
 
     const handleSignUp = async (e) => {
         e.preventDefault()
+        if(!name || !email || !password) {
+            M.toast({html: "Please complete all fields", classes: "toast"})
+            return;
+        }
         if (
             !/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(
               email
