@@ -10,12 +10,19 @@ const router = express.Router()
 // Create a new user
 router.post('/signup', async (req, res) => {
     try {
-        const user = new User(req.body)
+        const {name, email, password} = req.body
+        User.findOne({email})
+        .then(user=> {
+            if(user) {
+                throw new Error({error: 'A user already exists with this email address'})
+        }})
+        const user = new User({name, email, password})
         await user.save()
         const token = await user.generateAuthToken()
         res.status(201).send({ user, token, message: 'User successfully signed up' })
     }
     catch (error) {
+        console.log(error)
         res.status(400).send({error: error.message})
     }
 })
