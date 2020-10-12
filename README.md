@@ -7,3 +7,4 @@
 Authentication / Registration  
 Coin list  
 Coin portfolio
+Add/Remove/Edit coin portfolio
