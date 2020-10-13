@@ -10,7 +10,7 @@ const NavBar = () => {
     return (
             <nav className='NavBar'>
                 <Link to="/"><h1 className='title'>CryptoTrack</h1></Link>
-                {userData.user && <Link to="/profile"><h3>Profile</h3></Link>}
+                {userData.user && <Link to="/portfolio"><h3>Portfolio</h3></Link>}
                 <Link to="/coins"><h3>Top 100</h3></Link>
                 <AuthOptions />
             </nav>
