@@ -5,10 +5,10 @@ import NavBar from './components/NavBar'
 import Home from './components/Home'
 import SignIn from './components/SignIn'
 import SignUp from './components/SignUp'
-import Profile from './components/Profile'
 import Coins from './components/Coins'
 import UserContext from './context/UserContext'
 import './App.css';
+import Portfolio from './components/Portfolio';
 
 function App() {
 
@@ -56,8 +56,8 @@ function App() {
             <Route path="/signup">
               <SignUp />
             </Route>
-            <Route path="/profile">
-              <Profile />
+            <Route path="/portfolio">
+              <Portfolio />
             </Route>
             <Route path="/coins">
               <Coins />
