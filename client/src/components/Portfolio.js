@@ -1,5 +1,6 @@
-import React, {useState, useEffect, useContext} from 'react'
+import React, {useState, useEffect} from 'react'
 import axios from 'axios'
+import Coin from './Coin'
 
 const Portfolio = () => {
 
@@ -13,7 +14,6 @@ const Portfolio = () => {
                     "Authorization": localStorage.getItem('token')
                 }
             })
-            console.log(portfolio.data)
             if(portfolio.data) {
                 setTrackedCoins(portfolio.data.myCoins)
                 setLoading(false)
@@ -24,12 +24,12 @@ const Portfolio = () => {
 
     return (
         <div>
-            This is my Portfolio page
+            <h1>My Portfolio:</h1>
             {loading ? (
                 <h1>Loading...</h1>
             ) : (
                 trackedCoins.map(coin => {
-                    return <li>{coin.name}</li>
+                    return <Coin key={coin._id} coin={coin}/>
                 })
             )}
         </div>
