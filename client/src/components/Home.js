@@ -8,9 +8,15 @@ const Home = () => {
         <div>
             { userData.user ? 
                 ( 
+                    <div>
                     <h2>Welcome {userData.user.name}!</h2>
+                    </div>
+
                 ) : (
+                    <div>
                     <h2>Welcome to CryptoTracker</h2>
+                    <h4>Please sign up or sign in to continue</h4>
+                    </div>
                 )
             }
         </div>
