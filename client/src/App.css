@@ -134,9 +134,17 @@ button {
   text-align: center;
   padding: 10px;
 }
+
 .Coins{
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: space-between;
+}
+
+.Portfolio {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
 }

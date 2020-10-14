@@ -24,16 +24,21 @@ const Portfolio = () => {
 
     return (
         <div>
-            <h1>My Portfolio:</h1>
             {loading ? (
                 <h1>Loading...</h1>
             ) : (
-                trackedCoins.map(coin => {
+                <div>
+                <h1>My Portfolio:</h1>
+                <div className='Portfolio'>
+                {trackedCoins.map(coin => {
                     return <Coin key={coin._id} coin={coin}/>
-                })
+                })}
+                </div>
+                </div>
             )}
         </div>
     )
+    
 }
 
 export default Portfolio
