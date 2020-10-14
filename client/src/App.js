@@ -17,6 +17,18 @@ function App() {
     user: undefined
   })
 
+  const [coins, setCoins] = useState([])
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const topCoins = await axios.get('https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=100&page=1&sparkline=false')
+      if(topCoins.data) {
+        setCoins(topCoins.data)
+      }
+    }
+    fetchData()
+  }, [])
+
   useEffect(() => {
     const checkLogin = async () => {
       let token = localStorage.getItem('token')
@@ -60,7 +72,7 @@ function App() {
               <Portfolio />
             </Route>
             <Route path="/coins">
-              <Coins />
+              <Coins coins={coins}/>
             </Route>
         </Switch>
         </UserContext.Provider>
