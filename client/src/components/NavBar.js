@@ -15,13 +15,16 @@ const NavBar = () => {
     const fetchData = async () => {
         if(query !== '') {
             const result = await Axios.get(`https://api.coingecko.com/api/v3/coins/${query}`)
-            console.log(result)
-            if(!result.data) {
+            .catch(err => {
                 M.toast({html: `Unable to find a coin under the name of ${query}`, classes: "toast"})
+            })
+            console.log(result)
+            if(result) {
+                setCoinData(result.data)
+                setQuery('')
+                history.push(`/coin/${query}`)
             }
-            setCoinData(result.data)
-            setQuery('')
-            history.push(`/coin/${query}`)
+
         } else {
             M.toast({html: 'Please enter the name of a coin', classes:"toast"})
         }
