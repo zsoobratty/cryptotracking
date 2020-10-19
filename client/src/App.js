@@ -6,9 +6,11 @@ import Home from './components/Home'
 import SignIn from './components/SignIn'
 import SignUp from './components/SignUp'
 import Coins from './components/Coins'
+import CoinDetails from './components/CoinDetails'
 import UserContext from './context/UserContext'
 import './App.css';
 import Portfolio from './components/Portfolio';
+import CoinContext from './context/CoinContext';
 
 function App() {
 
@@ -16,6 +18,7 @@ function App() {
     token: undefined,
     user: undefined
   })
+  const [coinData, setCoinData] = useState({})
 
   const [coins, setCoins] = useState([])
 
@@ -57,6 +60,7 @@ function App() {
     <div className="App">
       <Router>
         <UserContext.Provider value={{userData, setUserData}}>
+        <CoinContext.Provider value={{coinData, setCoinData}}>
           <NavBar />
           <Switch>
             <Route exact path="/" >
@@ -74,10 +78,11 @@ function App() {
             <Route path="/coins">
               <Coins coins={coins}/>
             </Route>
-            <Route path="/coin/:coin">
+            <Route path="/coin/:coinName">
               <CoinDetails />
             </Route>
         </Switch>
+        </CoinContext.Provider>
         </UserContext.Provider>
       </Router>
       

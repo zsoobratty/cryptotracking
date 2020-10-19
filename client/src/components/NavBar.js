@@ -1,15 +1,15 @@
 import Axios from 'axios'
-import React, { useState } from 'react'
-import { useContext } from 'react'
+import React, { useState, useContext } from 'react'
 import {Link, useHistory} from 'react-router-dom'
 import UserContext from '../context/UserContext'
+import CoinContext from '../context/CoinContext'
 import AuthOptions from './AuthOptions'
 import M from 'materialize-css'
 
 const NavBar = () => {
     const [query, setQuery] = useState('')
-    const [coin, setCoin] = useState({})
     const {userData} = useContext(UserContext)
+    const {setCoinData} = useContext(CoinContext)
     const history = useHistory()
 
     const fetchData = async () => {
@@ -19,7 +19,7 @@ const NavBar = () => {
             if(!result.data) {
                 M.toast({html: `Unable to find a coin under the name of ${query}`, classes: "toast"})
             }
-            setCoin(result.data)
+            setCoinData(result.data)
             setQuery('')
             history.push(`/coin/${query}`)
         } else {
