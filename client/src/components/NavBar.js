@@ -1,26 +1,27 @@
 import Axios from 'axios'
 import React, { useState } from 'react'
 import { useContext } from 'react'
-import {Link} from 'react-router-dom'
+import {Link, useHistory} from 'react-router-dom'
 import UserContext from '../context/UserContext'
 import AuthOptions from './AuthOptions'
 import M from 'materialize-css'
 
 const NavBar = () => {
     const [query, setQuery] = useState('')
-    const [alert, setAlert] = useState('')
     const [coin, setCoin] = useState({})
     const {userData} = useContext(UserContext)
+    const history = useHistory()
 
     const fetchData = async () => {
         if(query !== '') {
             const result = await Axios.get(`https://api.coingecko.com/api/v3/coins/${query}`)
             console.log(result)
             if(!result.data) {
-                // setAlert('Unable to find a coin under this name')
                 M.toast({html: `Unable to find a coin under the name of ${query}`, classes: "toast"})
             }
             setCoin(result.data)
+            setQuery('')
+            history.push(`/coin/${query}`)
         } else {
             M.toast({html: 'Please enter the name of a coin', classes:"toast"})
         }

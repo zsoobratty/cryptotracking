@@ -74,6 +74,9 @@ function App() {
             <Route path="/coins">
               <Coins coins={coins}/>
             </Route>
+            <Route path="/coin/:coin">
+              <CoinDetails />
+            </Route>
         </Switch>
         </UserContext.Provider>
       </Router>
