@@ -5,9 +5,10 @@ const CoinDetails = () => {
     const {coinData} = useContext(CoinContext)
     console.log(coinData)
     return (
-        <div>
-            <h1>Hello CoinDetails</h1>
-            <h2>{coinData.name} - {coinData.symbol}</h2>
+        <div className='CoinDetails'>
+            <h2>{coinData.name} - {coinData && coinData.symbol ? coinData.symbol.toUpperCase() : null}</h2>
+            <img src={coinData && coinData.image ? coinData.image.large : null}/>
+            <h3>{coinData && coinData.description ? coinData.description.en : null }</h3>
         </div>
     )
 }
