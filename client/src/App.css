@@ -149,3 +149,9 @@ button {
     flex-wrap: wrap;
     justify-content: space-between;
 }
+
+.CoinDetails {
+  margin: 10px;
+  text-align: center;
+  width: auto;
+}
