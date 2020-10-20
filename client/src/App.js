@@ -8,19 +8,36 @@ import SignUp from './components/SignUp'
 import Coins from './components/Coins'
 import CoinDetails from './components/CoinDetails'
 import UserContext from './context/UserContext'
+import M from 'materialize-css'
 import './App.css';
 import Portfolio from './components/Portfolio';
-import CoinContext from './context/CoinContext';
+
 
 function App() {
-
   const [userData, setUserData] = useState({
     token: undefined,
     user: undefined
   })
-  const [coinData, setCoinData] = useState({})
-
+  const [coinData, setCoinData] = useState(undefined)
   const [coins, setCoins] = useState([])
+  const [query, setQuery] = useState('')
+
+  const fetchCoinData = async () => {
+    if(query !== '') {
+      const result = await axios.get(`https://api.coingecko.com/api/v3/coins/${query}`)
+      .catch(() => {
+        M.toast({html: `Unable to find a coin under the name of ${query}`, classes: "toast"})
+      })
+      if(result) {
+        console.log(result.data)
+        setCoinData(result.data)
+        setQuery('')
+      }
+    } else {
+      setCoinData(undefined)
+      return M.toast({html: 'Please enter a coin', classes:"toast"})
+    }
+  }
 
   useEffect(() => {
     const fetchData = async () => {
@@ -60,8 +77,7 @@ function App() {
     <div className="App">
       <Router>
         <UserContext.Provider value={{userData, setUserData}}>
-        <CoinContext.Provider value={{coinData, setCoinData}}>
-          <NavBar />
+          <NavBar query={query} setQuery={setQuery} coinData={coinData} fetchCoinData={fetchCoinData} />
           <Switch>
             <Route exact path="/" >
                 <Home />
@@ -79,10 +95,9 @@ function App() {
               <Coins coins={coins}/>
             </Route>
             <Route path="/coin/:coinName">
-              <CoinDetails />
+              <CoinDetails coinData={coinData}/>
             </Route>
         </Switch>
-        </CoinContext.Provider>
         </UserContext.Provider>
       </Router>
       
