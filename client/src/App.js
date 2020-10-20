@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react';
-import {BrowserRouter as Router, Route, Switch} from 'react-router-dom'
+import {BrowserRouter as Router, Route, Switch, useHistory} from 'react-router-dom'
 import axios from 'axios'
 import NavBar from './components/NavBar'
 import Home from './components/Home'
@@ -13,12 +13,13 @@ import './App.css';
 import Portfolio from './components/Portfolio';
 
 
-function App() {
+function Routing() {
+  const history = useHistory()
   const [userData, setUserData] = useState({
     token: undefined,
     user: undefined
   })
-  const [coinData, setCoinData] = useState(undefined)
+  const [coinData, setCoinData] = useState({})
   const [coins, setCoins] = useState([])
   const [query, setQuery] = useState('')
 
@@ -26,12 +27,13 @@ function App() {
     if(query !== '') {
       const result = await axios.get(`https://api.coingecko.com/api/v3/coins/${query}`)
       .catch(() => {
-        M.toast({html: `Unable to find a coin under the name of ${query}`, classes: "toast"})
+        return M.toast({html: `Unable to find a coin under the name of ${query}`, classes: "toast"})
       })
-      if(result) {
+      if(result.data) {
         console.log(result.data)
         setCoinData(result.data)
         setQuery('')
+        history.push('/coin/' + query)
       }
     } else {
       setCoinData(undefined)
@@ -75,7 +77,6 @@ function App() {
 
   return (
     <div className="App">
-      <Router>
         <UserContext.Provider value={{userData, setUserData}}>
           <NavBar query={query} setQuery={setQuery} coinData={coinData} fetchCoinData={fetchCoinData} />
           <Switch>
@@ -98,11 +99,18 @@ function App() {
               <CoinDetails coinData={coinData}/>
             </Route>
         </Switch>
-        </UserContext.Provider>
-      </Router>
-      
+        </UserContext.Provider> 
     </div>
   );
 }
 
-export default App;
+const App = () => {
+  return (
+    <Router>
+      <Routing />
+    </Router>
+  )
+}
+
+export default App
+

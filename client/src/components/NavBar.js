@@ -1,23 +1,16 @@
 import React, { useContext } from 'react'
-import {useHistory} from 'react-router-dom'
 import {Link} from 'react-router-dom'
 import UserContext from '../context/UserContext'
 import AuthOptions from './AuthOptions'
 
 
-const NavBar = ({query, setQuery, coinData, fetchCoinData}) => {
-    const history = useHistory()
+const NavBar = ({query, setQuery, fetchCoinData}) => {
+
     const {userData} = useContext(UserContext)
 
     const handleCoinSearch = (e) => {
         e.preventDefault()
         fetchCoinData()
-        console.log(coinData)
-        if(coinData) {
-            history.push(`/coin/${query}`)
-        } else {
-            return;
-        }
     }
     
 
