@@ -11,6 +11,7 @@ const Coin = ({coin}) => {
                 const fetchData = async () => {
                     const coinInfo = await axios.get(`https://api.coingecko.com/api/v3/coins/${name}`)
                     if(coinInfo.data) {
+                        console.log(coinInfo.data)
                         setCoinDetails(coinInfo.data)
                     } else {
                         console.log('No coin under this name')

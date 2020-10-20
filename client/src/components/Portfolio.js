@@ -29,9 +29,10 @@ const Portfolio = () => {
             ) : (
                 <div>
                 <h1>My Portfolio:</h1>
+                <h2>Value of holdings:  </h2>
                 <div className='Portfolio'>
                 {trackedCoins.map(coin => {
-                    return <Coin key={coin._id} coin={coin}/>
+                    return <Coin key={coin._id} coin={coin} />
                 })}
                 </div>
                 </div>

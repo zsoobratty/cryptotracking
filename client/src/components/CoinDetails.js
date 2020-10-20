@@ -1,5 +1,4 @@
-import React, {useContext} from 'react'
-import CoinContext from '../context/CoinContext'
+import React from 'react'
 
 const CoinDetails = ({coinData}) => {
     return (
