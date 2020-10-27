@@ -5,6 +5,7 @@ import { useEffect } from 'react'
 const Coin = ({coin}) => {
     const [coinDetails, setCoinDetails] = useState([])
     const { name, symbol, current_price, image, market_cap_rank, holding } = coin
+
     
     useEffect(() => {
         if(coin.holding) {
