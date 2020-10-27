@@ -20,6 +20,7 @@ const Portfolio = () => {
             }
         }
         fetchData()
+        totalValue()
     },[])
 
     const totalValue = () => {
@@ -30,7 +31,7 @@ const Portfolio = () => {
     }
 
     return (
-        <div>
+        <div className='Portfolio-container'>
             {loading ? (
                 <h1>Loading...</h1>
             ) : (

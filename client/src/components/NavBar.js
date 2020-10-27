@@ -20,7 +20,7 @@ const NavBar = ({query, setQuery, fetchCoinData}) => {
                 {userData.user && <Link to="/portfolio"><h3>Portfolio</h3></Link>}
                 <Link to="/coins"><h3>Top 100</h3></Link>
                 <form className='NavBar-search-form' onSubmit={handleCoinSearch}>
-                    <input type="text" placeholder="Search for a coin" onChange={(e) => setQuery(e.target.value)} value={query}/>
+                    <input type="text" placeholder="Search for a coin..." onChange={(e) => setQuery(e.target.value)} value={query}/>
                     <input type="submit" value="Search"/>
                 </form>
                 <AuthOptions />

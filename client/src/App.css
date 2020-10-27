@@ -142,15 +142,42 @@ button {
   justify-content: space-between;
 }
 
+.Portfolio-container {
+  text-align: center;
+  margin: 10px;
+}
+
 .Portfolio {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: center;
+    margin: 50px;
 }
 
 .CoinDetails {
   margin: 10px;
   text-align: center;
   width: auto;
+}
+
+input[type=text] {
+  height: 40px;
+  width: 250px;
+  text-align: center;
+  border: none;
+  font-size: 16px;
+}
+input[type=submit] {
+  height: 40px;
+  width: 150px;
+  border: none;
+  background-color: #97203c;
+  color: aliceblue;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: bold;
+}
+input[type=submit]:hover {
+  background-color: #430e1b;
 }

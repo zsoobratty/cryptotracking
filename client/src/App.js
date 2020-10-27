@@ -33,7 +33,7 @@ function Routing() {
         console.log(result.data)
         setCoinData(result.data)
         setQuery('')
-        history.push('/coin/' + query)
+        history.push('/coin/' + query.toLowerCase())
       }
     } else {
       setCoinData(undefined)
@@ -82,6 +82,7 @@ function Routing() {
           <Switch>
             <Route exact path="/" >
                 <Home />
+                <Portfolio />
             </Route>
             <Route path="/signin">
               <SignIn />
