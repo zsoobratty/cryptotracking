@@ -11,11 +11,10 @@ const Coin = ({coin}) => {
 
     
     useEffect(() => {
-        if(coin.holding) {
+        if(holding) {
                 const fetchData = async () => {
                     const coinInfo = await axios.get(`https://api.coingecko.com/api/v3/coins/${name}`)
                     if(coinInfo.data) {
-                        console.log(coinInfo.data)
                         setCoinDetails(coinInfo.data)
                         axios.patch(`/mycoins/${coinInfo.data.id}`, {
                             currentPrice: coinInfo.data.market_data.current_price.usd

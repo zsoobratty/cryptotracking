@@ -3,6 +3,7 @@ import axios from 'axios'
 import Coin from './Coin'
 
 const Portfolio = () => {
+    let portfolioValue = 0
 
     const [trackedCoins, setTrackedCoins] = useState([])
     const [loading, setLoading] = useState(true)
@@ -29,7 +30,10 @@ const Portfolio = () => {
             ) : (
                 <div>
                 <h1>My Portfolio:</h1>
-                <h2>Value of holdings:  </h2>
+                <h2>Value of holdings: {trackedCoins.forEach((coin) => {
+                    portfolioValue += (coin.currentPrice * coin.holding)
+                })} 
+                ${portfolioValue.toFixed(2)}</h2>
                 <div className='Portfolio'>
                 {trackedCoins.map(coin => {
                     return <Coin key={coin._id} coin={coin} />
