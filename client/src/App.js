@@ -25,7 +25,7 @@ function Routing() {
 
   const fetchCoinData = async () => {
     if(query !== '') {
-      const result = await axios.get(`https://api.coingecko.com/api/v3/coins/${query}`)
+      const result = await axios.get(`https://api.coingecko.com/api/v3/coins/${query.toLowerCase()}`)
       .catch(() => {
         return M.toast({html: `Unable to find a coin under the name of ${query}`, classes: "toast"})
       })

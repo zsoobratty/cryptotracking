@@ -16,6 +16,10 @@ const coinSchema = new Schema({
         type: Number,
         required: true
     },
+    currentPrice: {
+        type:Number,
+        required: true
+    },
     symbol: {
         type: String,
         required: true
