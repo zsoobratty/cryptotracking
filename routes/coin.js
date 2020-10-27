@@ -19,7 +19,7 @@ router.get('/mycoins', requireToken, async (req, res) => {
 router.post('/mycoins/add', requireToken, async (req, res) => {
     try{
         const { name, holding, purchasePrice, currentPrice, symbol } = req.body
-        if(!name || !holding || !purchasePrice || !symbol) {
+        if(!name || !holding || !purchasePrice || !symbol || !currentPrice) {
             return res.status(422).json({error: "Missing information"})
         }
 
