@@ -1,8 +1,11 @@
 import axios from 'axios'
 import React, {useState} from 'react'
+import { useContext } from 'react'
 import { useEffect } from 'react'
+import UserContext from '../context/UserContext'
 
 const Coin = ({coin}) => {
+    const {userData} = useContext(UserContext)
     const [coinDetails, setCoinDetails] = useState([])
     const { name, symbol, current_price, image, market_cap_rank, holding } = coin
 
@@ -14,6 +17,12 @@ const Coin = ({coin}) => {
                     if(coinInfo.data) {
                         console.log(coinInfo.data)
                         setCoinDetails(coinInfo.data)
+                        axios.patch(`/mycoins/${coinInfo.data.id}`, {
+                            currentPrice: coinInfo.data.market_data.current_price.usd
+                        },
+                        {headers: {
+                            'Authorization': userData.token
+                        }})
                     } else {
                         console.log('No coin under this name')
                     }

@@ -41,6 +41,7 @@ router.post('/mycoins/add', requireToken, async (req, res) => {
 
 router.patch('/mycoins/:id', requireToken, async (req, res) => {
     console.log(req.params)
+    console.log(req.body)
     const coin = await Coin.findOne({name: req.params.id})
     if (coin.currentPrice != null) {
         coin.currentPrice = req.body.currentPrice
