@@ -52,6 +52,7 @@ button {
 
 .NavBar .AuthOptions button:hover {
   background-color: #0A0A0A;
+  transition: 0.3s linear;
 } 
 
 .SignUp {
@@ -194,4 +195,5 @@ button {
 }
 .NavBar-button:hover {
   background-color: #0A0A0A;
+  transition: 0.3s linear;
 }
