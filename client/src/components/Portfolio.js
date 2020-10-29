@@ -37,12 +37,18 @@ const Portfolio = () => {
             ) : (
                 <div>
                 <h1>My Portfolio:</h1>
-                <h2>Value of holdings: ${totalValue()}</h2>
-                <div className='Portfolio'>
-                {trackedCoins.map(coin => {
-                    return <Coin key={coin._id} coin={coin} />
-                })}
-                </div>
+                {trackedCoins.length > 0 ? (
+                    <div>
+                    <h2>Value of holdings: ${totalValue()}</h2>
+                    <div className='Portfolio'>
+                    {trackedCoins.map(coin => {
+                        return <Coin key={coin._id} coin={coin} />
+                    })}
+                    </div>
+                    </div>
+                ) : (
+                    <h1>You haven't added any coins to your portfolio yet!</h1>
+                )}
                 </div>
             )}
         </div>

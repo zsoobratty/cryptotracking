@@ -12,7 +12,6 @@ const Home = () => {
                 ( 
                     <div>
                         <h2>Welcome {userData.user.name}!</h2>
-                        <h3>Add your coin holdings and track your crypto performance!</h3>
                         <Portfolio />
                     </div>
 
