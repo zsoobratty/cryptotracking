@@ -103,7 +103,6 @@ function Routing() {
           <Switch>
             <Route exact path="/" >
                 <Home />
-                <Portfolio />
             </Route>
             <Route path="/signin">
               <SignIn />

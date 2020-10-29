@@ -24,7 +24,7 @@ button {
 }
 
 .NavBar {
-  background-color: #ba274a;
+  background-color: #333333;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -46,12 +46,12 @@ button {
   padding-right: 10px;
   height: 100%;
   color: aliceblue;
-  background-color: #97203c;
+  background-color: #1F1F1F;
   outline: none;
 }
 
 .NavBar .AuthOptions button:hover {
-  background-color: #430e1b;
+  background-color: #8D8D92;
 } 
 
 .SignUp {
@@ -180,12 +180,12 @@ button {
   height: 40px;
   width: 150px;
   border: none;
-  background-color: #97203c;
+  background-color: #1F1F1F;
   color: aliceblue;
   cursor: pointer;
   font-size: 16px;
   font-weight: bold;
 }
 .NavBar-button:hover {
-  background-color: #430e1b;
+  background-color: #8D8D92;
 }
