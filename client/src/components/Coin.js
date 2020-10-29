@@ -2,11 +2,13 @@ import axios from 'axios'
 import React, {useState} from 'react'
 import { useContext } from 'react'
 import { useEffect } from 'react'
+import { useHistory } from 'react-router-dom'
 
 import UserContext from '../context/UserContext'
 
 const Coin = ({coin}) => {
     const {userData} = useContext(UserContext)
+    const history = useHistory()
 
     const [coinDetails, setCoinDetails] = useState([])
     const { name, symbol, current_price, image, market_cap_rank, holding } = coin
@@ -42,6 +44,7 @@ const Coin = ({coin}) => {
                     <img src={coinDetails && coinDetails.image ? coinDetails.image.small : null } alt=""/>
                     <h3>Amount held: {holding} {symbol.toUpperCase()}</h3>
                     <h3>Total: ${(holding * ( coinDetails.market_data && coinDetails ? coinDetails.market_data.current_price.usd : null)).toFixed(2) }</h3>
+                    <button onClick={() => history.push(`/coin/${name.toLowerCase()}`)}>Find out more</button>
                 </div>
             ) : (
             <div>
@@ -50,6 +53,7 @@ const Coin = ({coin}) => {
                 <h2>{name}</h2> 
                 <h3>{symbol.toUpperCase()}</h3>
                 <h3>${current_price}</h3>
+                <button onClick={() => history.push(`/coin/${name.toLowerCase()}`)}>Find out more</button>
             </div>
             )}
         </div>

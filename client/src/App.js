@@ -5,7 +5,7 @@ import NavBar from './components/NavBar'
 import Home from './components/Home'
 import SignIn from './components/SignIn'
 import SignUp from './components/SignUp'
-import Coins from './components/Coins'
+import TopCoins from './components/TopCoins'
 import CoinDetails from './components/CoinDetails'
 import UserContext from './context/UserContext'
 import NoCoin from './components/NoCoin'
@@ -117,7 +117,7 @@ function Routing() {
               <Portfolio />
             </Route>
             <Route path="/coins">
-              <Coins coins={coins}/>
+              <TopCoins coins={coins}/>
             </Route>
             <Route path="/coin/:id">
               <CoinDetails setParams={setParams} coinData={coinData}/>
