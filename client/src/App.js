@@ -32,13 +32,11 @@ function Routing() {
       await axios.get(`https://api.coingecko.com/api/v3/coins/${query.toLowerCase()}`)
       .then((res) => {
         if(res.data) {
-          console.log(res.data)
           setCoinData(res.data)
           setQuery('')
           history.push('/coin/' + query.toLowerCase())
       }})
         .catch((error) => {
-          console.log('error', error)
           setCoinData(undefined)
           history.push('/coin/' + query.toLowerCase())
         })
