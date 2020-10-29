@@ -21,7 +21,7 @@ const Portfolio = () => {
         }
         fetchData()
         totalValue()
-    },[])
+    },[trackedCoins])
 
     const totalValue = () => {
         trackedCoins.forEach((coin) => {

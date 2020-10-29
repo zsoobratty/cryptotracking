@@ -8,38 +8,61 @@ import SignUp from './components/SignUp'
 import Coins from './components/Coins'
 import CoinDetails from './components/CoinDetails'
 import UserContext from './context/UserContext'
+import NoCoin from './components/NoCoin'
 import M from 'materialize-css'
 import './App.css';
 import Portfolio from './components/Portfolio';
 
 
+
 function Routing() {
   const history = useHistory()
+
   const [userData, setUserData] = useState({
     token: undefined,
     user: undefined
   })
   const [coinData, setCoinData] = useState({})
+  const [params, setParams] = useState('')
   const [coins, setCoins] = useState([])
   const [query, setQuery] = useState('')
 
   const fetchCoinData = async () => {
     if(query !== '') {
-      const result = await axios.get(`https://api.coingecko.com/api/v3/coins/${query.toLowerCase()}`)
-      .catch(() => {
-        return M.toast({html: `Unable to find a coin under the name of ${query}`, classes: "toast"})
-      })
-      if(result.data) {
-        console.log(result.data)
-        setCoinData(result.data)
-        setQuery('')
-        history.push('/coin/' + query.toLowerCase())
-      }
+      await axios.get(`https://api.coingecko.com/api/v3/coins/${query.toLowerCase()}`)
+      .then((res) => {
+        if(res.data) {
+          console.log(res.data)
+          setCoinData(res.data)
+          setQuery('')
+          history.push('/coin/' + query.toLowerCase())
+      }})
+        .catch((error) => {
+          console.log('error', error)
+          setCoinData(undefined)
+          history.push('/coin/' + query.toLowerCase())
+        })
     } else {
       setCoinData(undefined)
       return M.toast({html: 'Please enter a coin', classes:"toast"})
     }
   }
+
+  useEffect(() => {
+    const fetchParamData = async () => {
+      if(params) {
+        await axios.get(`https://api.coingecko.com/api/v3/coins/${params}`)
+        .then((res) => {
+          setCoinData(res.data)
+        })
+        .catch((err) => {
+          setCoinData(undefined)
+        })
+      }
+    }
+    fetchParamData()
+  }, [params])
+
 
   useEffect(() => {
     const fetchData = async () => {
@@ -96,8 +119,11 @@ function Routing() {
             <Route path="/coins">
               <Coins coins={coins}/>
             </Route>
-            <Route path="/coin/:coinName">
-              <CoinDetails coinData={coinData}/>
+            <Route path="/coin/:id">
+              <CoinDetails setParams={setParams} coinData={coinData}/>
+            </Route>            
+            <Route path="/invalidcoin">
+              <NoCoin query={query}/>
             </Route>
         </Switch>
         </UserContext.Provider> 

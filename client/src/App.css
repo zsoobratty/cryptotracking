@@ -161,14 +161,16 @@ button {
   width: auto;
 }
 
-input[type=text] {
+
+.NavBar-input {
   height: 40px;
   width: 250px;
   text-align: center;
   border: none;
   font-size: 16px;
+  margin-right: 2px;
 }
-input[type=submit] {
+.NavBar-button {
   height: 40px;
   width: 150px;
   border: none;
@@ -178,6 +180,6 @@ input[type=submit] {
   font-size: 16px;
   font-weight: bold;
 }
-input[type=submit]:hover {
+.NavBar-button:hover {
   background-color: #430e1b;
 }
