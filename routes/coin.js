@@ -1,6 +1,7 @@
 const express = require('express')
 const Coin = require('../models/Coin')
 const requireToken = require('../middleware/requireToken')
+const { deleteOne } = require('../models/Coin')
 
 const router = express.Router()
 
@@ -55,6 +56,15 @@ router.patch('/mycoins/:id', requireToken, async (req, res) => {
         res.json(updatedCoin)
     } catch(err) {
         res.status(404).json({message: err.message})
+    }
+})
+
+router.delete('/mycoins/:id', requireToken, async (req, res) => {
+    try {
+        await Coin.findOneAndRemove({name: req.params.id})
+        res.status(200).send('Coin successfully deleted')
+    } catch (err) {
+        res.status(400).send(err)
     }
 })
 

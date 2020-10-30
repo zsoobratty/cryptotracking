@@ -8,24 +8,37 @@ const AddCoinForm = ({coinDetails}) => {
     const {userData} = useContext(UserContext)
     const [amountHeld, setAmountHeld] = useState()
     const {id, symbol, current_price} = coinDetails
-    console.log(coinDetails)
-    console.log(coinDetails.holding)
 
     const handleAddCoin = async (e) => {
         e.preventDefault()
         if (coinDetails.holding) {
-            await Axios.patch(`/mycoins/${coinDetails.name}`, {
-                holding: parseInt(amountHeld)
-            },
-            { headers: {
-                "Authorization": userData.token
-            }})
-            .then(res => {
-                console.log(res)
-            })
-            .catch(err => {
-                console.log(err.message)
-            })
+            console.log(coinDetails.holding, amountHeld)
+            if (coinDetails.holding + parseInt(amountHeld) < 1) {
+                await Axios.delete(`/mycoins/${coinDetails.name}`, {
+                    headers: {
+                        "Authorization": userData.token
+                    }
+                })
+                .then(res => {
+                    console.log(res)
+                })
+                .catch(err => {
+                    console.log(err.message)
+                })
+            } else {
+                await Axios.patch(`/mycoins/${coinDetails.name}`, {
+                    holding: parseInt(amountHeld)
+                },
+                { headers: {
+                    "Authorization": userData.token
+                }})
+                .then(res => {
+                    console.log(res)
+                })
+                .catch(err => {
+                    console.log(err.message)
+                })
+            }
         } else {
 
         await Axios.post('/mycoins/add', {
