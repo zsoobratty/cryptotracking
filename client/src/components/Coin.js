@@ -3,7 +3,7 @@ import React, {useState} from 'react'
 import { useContext } from 'react'
 import { useEffect } from 'react'
 import { useHistory } from 'react-router-dom'
-
+import AddCoinForm from './AddCoinForm'
 import UserContext from '../context/UserContext'
 
 const Coin = ({coin}) => {
@@ -12,7 +12,6 @@ const Coin = ({coin}) => {
 
     const [coinDetails, setCoinDetails] = useState([])
     const { id, name, symbol, current_price, image, market_cap_rank, holding } = coin
-
 
     
     useEffect(() => {
@@ -33,7 +32,7 @@ const Coin = ({coin}) => {
                 }
                 fetchData()
         }
-    }, [])
+    }, [holding])
 
 
     return (
@@ -56,6 +55,9 @@ const Coin = ({coin}) => {
                 <button onClick={() => history.push(`/coin/${id.toLowerCase()}`)}>Find out more</button>
             </div>
             )}
+            <div>
+                <AddCoinForm coinDetails={coin}/>
+            </div>
         </div>
     )
 }

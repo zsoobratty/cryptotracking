@@ -18,6 +18,7 @@ router.get('/mycoins', requireToken, async (req, res) => {
 
 router.post('/mycoins/add', requireToken, async (req, res) => {
     try{
+        console.log(req.body, 'try route')
         const { name, holding, purchasePrice, currentPrice, symbol } = req.body
         if(!name || !holding || !purchasePrice || !symbol || !currentPrice) {
             return res.status(422).json({error: "Missing information"})
@@ -41,9 +42,14 @@ router.post('/mycoins/add', requireToken, async (req, res) => {
 
 router.patch('/mycoins/:id', requireToken, async (req, res) => {
     const coin = await Coin.findOne({name: req.params.id})
-    if (coin.currentPrice != null) {
+    console.log(req.params.id)
+    console.log(req.body, coin.holding)
+    if (req.body.currentPrice) {
         coin.currentPrice = req.body.currentPrice
     } 
+    if (req.body.holding) {
+        coin.holding += req.body.holding
+    }
     try {
         const updatedCoin = await coin.save()
         res.json(updatedCoin)
