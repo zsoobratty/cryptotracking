@@ -58,6 +58,7 @@ const AddCoinForm = ({coinDetails}) => {
             console.log(err.message, 'catch')
         })
         }
+        setAmountHeld('')
     }
 
 
