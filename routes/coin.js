@@ -61,7 +61,7 @@ router.patch('/mycoins/:id', requireToken, async (req, res) => {
 
 router.delete('/mycoins/:id', requireToken, async (req, res) => {
     try {
-        await Coin.findOneAndRemove({name: req.params.id})
+        await Coin.deleteOne({name: req.params.id})
         res.status(200).send('Coin successfully deleted')
     } catch (err) {
         res.status(400).send(err)
