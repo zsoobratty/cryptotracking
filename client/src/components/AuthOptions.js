@@ -14,6 +14,7 @@ const AuthOptions = () => {
             user: undefined
         })
         localStorage.setItem("token", "")
+        history.push('/')
     }
 
     return (

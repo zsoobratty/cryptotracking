@@ -12,7 +12,6 @@ const AddCoinForm = ({coinDetails}) => {
     const handleAddCoin = async (e) => {
         e.preventDefault()
         if (coinDetails.holding) {
-            console.log(coinDetails.holding, amountHeld)
             if (coinDetails.holding + parseInt(amountHeld) < 1) {
                 await Axios.delete(`/mycoins/${coinDetails.name}`, {
                     headers: {
@@ -60,8 +59,6 @@ const AddCoinForm = ({coinDetails}) => {
         }
         setAmountHeld('')
     }
-
-
 
     return (
         <div>
