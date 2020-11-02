@@ -43,7 +43,7 @@ const Coin = ({coin}) => {
                     <img src={coinDetails && coinDetails.image ? coinDetails.image.small : null } alt=""/>
                     <h3>Amount held: {holding} {symbol.toUpperCase()}</h3>
                     <h3>Total: ${(holding * ( coinDetails.market_data && coinDetails ? coinDetails.market_data.current_price.usd : null)).toFixed(2) }</h3>
-                    <button onClick={() => history.push(`/coin/${id.toLowerCase()}`)}>Find out more</button>
+                    <button onClick={() => history.push(`/coin/${name.toLowerCase()}`)}>Find out more</button>
                 </div>
             ) : (
             <div>
@@ -55,9 +55,6 @@ const Coin = ({coin}) => {
                 <button onClick={() => history.push(`/coin/${id.toLowerCase()}`)}>Find out more</button>
             </div>
             )}
-            <div>
-                <AddCoinForm coinDetails={coin}/>
-            </div>
         </div>
     )
 }
