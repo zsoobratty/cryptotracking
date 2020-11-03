@@ -34,6 +34,16 @@ const Coin = ({coin}) => {
         }
     }, [holding])
 
+    const handleDelete = async () => {
+        await axios.delete(`/mycoins/${coinDetails.name}`, {headers: {"Authorization": userData.token}})
+        .then(res => {
+            console.log(res)
+        })
+        .catch(err => {
+            console.log(err)
+        })
+    }
+
 
     return (
         <div className='Coin'>
@@ -44,6 +54,9 @@ const Coin = ({coin}) => {
                     <h3>Amount held: {holding} {symbol.toUpperCase()}</h3>
                     <h3>Total: ${(holding * ( coinDetails.market_data && coinDetails ? coinDetails.market_data.current_price.usd : null)).toFixed(2) }</h3>
                     <button onClick={() => history.push(`/coin/${name.toLowerCase()}`)}>Find out more</button>
+                    <div>
+                        <button onClick={handleDelete}><i className='fas fa-trash'></i></button>
+                    </div>
                 </div>
             ) : (
             <div>

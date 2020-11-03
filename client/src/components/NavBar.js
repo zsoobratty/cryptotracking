@@ -23,6 +23,7 @@ const NavBar = ({query, setQuery, fetchCoinData}) => {
                     <input className='NavBar-button' type="submit" value="Search"/>
                 </form>
                 {userData.user && <Link to="/portfolio"><h3>Portfolio</h3></Link>}
+                {userData.user && <Link to="/addcoin"><h3>Add to Portfolio</h3></Link>}
                 <AuthOptions />
             </nav>
     )

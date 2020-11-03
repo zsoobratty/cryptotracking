@@ -9,6 +9,7 @@ import TopCoins from './components/TopCoins'
 import CoinDetails from './components/CoinDetails'
 import UserContext from './context/UserContext'
 import NoCoin from './components/NoCoin'
+import AddCoinForm from './components/AddCoinForm'
 import M from 'materialize-css'
 import './App.css';
 import Portfolio from './components/Portfolio';
@@ -113,6 +114,9 @@ function Routing() {
             <Route path="/portfolio">
               <Portfolio />
             </Route>
+            {/* <Route path="/addcoin">
+              <AddCoinForm />
+            </Route> */}
             <Route path="/coins">
               <TopCoins coins={coins}/>
             </Route>
