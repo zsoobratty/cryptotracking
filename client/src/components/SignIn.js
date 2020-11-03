@@ -1,5 +1,6 @@
 import axios from 'axios'
 import React, { useState } from 'react'
+import {Link} from 'react-router-dom'
 import UserContext from '../context/UserContext'
 import { useContext } from 'react'
 import { useHistory } from 'react-router-dom'
@@ -52,6 +53,9 @@ const SignIn = () => {
                 />
                 <button onClick={handleSignIn}>Submit</button>
             </form>
+            <div>
+                <Link to='/signup'>Don't have an account?</Link>
+            </div>
         </div>
     )
 }

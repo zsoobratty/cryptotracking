@@ -4,6 +4,7 @@ import { useContext } from 'react'
 import { useState } from 'react'
 import UserContext from '../context/UserContext'
 
+
 const AddCoinForm = ({coinDetails}) => {
     const {userData} = useContext(UserContext)
     const [amountHeld, setAmountHeld] = useState()
@@ -61,7 +62,7 @@ const AddCoinForm = ({coinDetails}) => {
     }
 
     return (
-        <div>
+        <div className='AddCoinForm'>
             <form>
                 <input 
                     type="number"
@@ -71,6 +72,7 @@ const AddCoinForm = ({coinDetails}) => {
                 />
                 <button onClick={handleAddCoin}>Submit</button>
             </form>
+
         </div>
     )
 }

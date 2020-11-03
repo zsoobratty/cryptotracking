@@ -12,7 +12,7 @@ body {
 }
 
 a {
-  color: aliceblue;
+  color: #474747;
   text-decoration: unset;
 }
 
@@ -29,6 +29,10 @@ button {
   justify-content: space-between;
   align-items: center;
   height: 50px;
+}
+
+.NavBar a {
+  color: aliceblue;
 }
 
 .NavBar .title {

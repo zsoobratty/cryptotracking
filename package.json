@@ -12,12 +12,18 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^1.2.32",
+    "@fortawesome/free-solid-svg-icons": "^5.15.1",
+    "@fortawesome/react-fontawesome": "^0.1.12",
     "bcryptjs": "^2.4.3",
     "express": "^4.17.1",
+    "font-awesome": "^4.7.0",
+    "i": "^0.3.6",
     "jsonwebtoken": "^8.5.1",
     "live-server": "^1.2.1",
     "mongoose": "^5.10.7",
     "mongoose-url-slugs": "^1.0.2",
+    "npm": "^6.14.8",
     "validator": "^13.1.17"
   },
   "devDependencies": {
